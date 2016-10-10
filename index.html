@@ -1,72 +1,190 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>无标题文档</title>
+<title>CSS3 制作3D旋转球体</title>
+<meta name="description" content="CSS3 制作3D旋转球体" />
+<meta name="keywords" content="CSS3,CSS3旋转,CSS3动画,CSS3D,transform,3D,keyframes,蓝色梦想,bluesdream,梦幻神化" />
 <style>
-body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,a,i,b,em,strong,span,img{padding:0; margin:0; font-family:'Microsoft Yahei'}
-a{ text-decoration:none; }
-li{ list-style:none; }
-em,i{ font-style:norml; }
-b,strong{ font-weight:normal; }
-.fl{ float:left; }
-.fr{ float:right; }
-.img,input,textarea,li{ vertical-align:top; }
-.bk{height:768px; background:url(img/bigbk.jpg) no-repeat top center; min-width:960px;background-size:100% 100%;}
-.box_in{ width:960px; height:100px; margin:0 auto;overflow:hidden;}
-.box_in h3{width:156px; height:26px; background:url(img/icon-03.png) no-repeat; margin-top:37px; margin-left:30px;}
+* {
+	margin:0; padding:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	/*
+		语法结构&说明：
+		box-sizing：content-box | border-box
+		content-box：此属性表现为标准模式下的盒模型（当我们设置元素的width和height时，它的宽度不包括border和padding。例：width:100px; border-width:10px; 元素实际宽度为220px;）
+		border-box：此属性表现为怪异模式下的盒模型（和content-box相反，它的宽度包含border和padding。例：width:100px; border-width:10px; 此时的border相当于内边距，元素实际宽度仍为200px;）
+	*/
+}
+body {
+	background:black;
+}
+.wrap {
+	margin: 150px auto;
+	position: relative;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.wrap, .x, .y, .z {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+.x1, .x2, .y, .y1, .y2, .z, .z1, .z2 , .xInner , .yInner , .zInner {
+	position: absolute;
+}
+.x1,.x2,.y1,.y2,.z1,.z2 {
+	width: 87.5%;
+	height: 87.5%;
+	border-radius: 50%;
+}
+.x {
+	position: relative;
+	border: 1px solid #FF0099;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-animation: mymove 10s linear infinite;
+	-moz-animation: mymove 10s linear infinite;
+	-ms-animation: mymove 10s linear infinite;
+	animation: mymove 10s linear infinite;
+}
+.y {
+	top: 0; left: 0;
+	border: 2px solid #0099FF;
+	-webkit-transform: rotateX(90deg);
+	-moz-transform: rotateX(90deg);
+	-ms-transform: rotateX(90deg);
+	transform: rotateX(90deg);
+}
+.z {
+	top: 0; left: 0;
+	border: 1px solid #FFCC33;
+	-webkit-transform: rotateY(90deg);
+	-moz-transform: rotateY(90deg);
+	-ms-transform: rotateY(90deg);
+	transform: rotateY(90deg);
+}
+.x1 {
+	top: 6.25%; left: 6.25%;
+	border: 1px solid #FF0099;
+	-webkit-transform: translateZ(50px);
+	-moz-transform: translateZ(50px);
+	-ms-transform: translateZ(50px);
+	transform: translateZ(50px);
+}
+.x2 {
+	top: 6.25%; left: 6.25%;
+	border: 1px solid #FF0099;
+	-webkit-transform: rotateX(180deg) translateZ(50px);
+	-moz-transform: rotateX(180deg) translateZ(50px);
+	-ms-transform: rotateX(180deg) translateZ(50px);
+	transform: rotateX(180deg) translateZ(50px);
+}
+.y1 {
+	top: 6.25%; left: 6.25%;
+	border: 1px solid #0099FF;
+	-webkit-transform: rotateX(90deg) translateZ(50px);
+	-moz-transform: rotateX(90deg) translateZ(50px);
+	-ms-transform: rotateX(90deg) translateZ(50px);
+	transform: rotateX(90deg) translateZ(50px);
+}
+.y2 {
+	top: 6.25%; left: 6.25%;
+	border: 1px solid #0099FF;
+	-webkit-transform: rotateX(270deg) translateZ(50px);
+	-moz-transform: rotateX(270deg) translateZ(50px);
+	-ms-transform: rotateX(270deg) translateZ(50px);
+	transform: rotateX(270deg) translateZ(50px);
+}
+.z1 {
+	top: 6.25%; left: 6.25%;
+	border: 1px solid #FFCC33;
+	-webkit-transform: rotateY(90deg) translateZ(50px);
+	-moz-transform: rotateY(90deg) translateZ(50px);
+	-ms-transform: rotateY(90deg) translateZ(50px);
+	transform: rotateY(90deg) translateZ(50px);
+}
+.z2 {
+	top: 6.25%; left: 6.25%;
+	border: 1px solid #FFCC33;
+	-webkit-transform: rotateY(270deg) translateZ(50px);
+	-moz-transform: rotateY(270deg) translateZ(50px);
+	-ms-transform: rotateY(270deg) translateZ(50px);
+	transform: rotateY(270deg) translateZ(50px);
+}
+.xInner {
+	border: 1px solid #FF0099;
+	width: 100%;
+	top: 50%;
+}
+.yInner {
+	height: 100%;
+	left: 50%;
+	border: 1px solid #0099FF;
+	-webkit-transform: rotateX(90deg);
+	-moz-transform: rotateX(90deg);
+	-ms-transform: rotateX(90deg);
+	transform: rotateX(90deg);
+}
+.zInner {
+	height: 100%;
+	left: 50%;
+	border: 1px solid #FFCC33;
+	-webkit-transform: rotateY(90deg);
+	-moz-transform: rotateY(90deg);
+	-ms-transform: rotateY(90deg);
+	transform: rotateY(90deg);
+}
 
-.box_in .r{width:300px; height:14px; margin-top:50px; font-size:12px; color:#f5f5f9;}
-.box_in .r .phone{width:11px; height:14px; background:url(img/icon-01.png) no-repeat; float:left; margin-right:10px;}
-.box_in .r .e-mail{width:13px; height:9px; background:url(img/icon-02.png) no-repeat; margin-top:5px; margin-left:20px; margin-right:10px;}
-.box_in a{width:90px; height:25px; background:#f5f5f9; border-radius:20px; font-size:12px; text-align:center; line-height:25px; color:#44a97f;margin-top:45px; margin-right:50px;}
-.box_in a:hover{background:#d3aa44; color:#f5f5f9;}
-.font{background:url(img/icon1-01.png) no-repeat; width:620px;height:200px; margin:30px auto; }
+@-webkit-keyframes mymove
+{
+	100% { -webkit-transform:  rotateX(360deg) rotateY(180deg) }
+}
+@-moz-keyframes mymove
+{
+	100% { -moz-transform:  rotateX(360deg) rotateY(360deg) }
+}
+@-ms-keyframes mymove
+{
+	100% { -ms-transform:  rotateX(360deg) rotateY(360deg) }
+}
+@keyframes mymove
+{
+	100% { transform:  rotateX(360deg) rotateY(360deg) }
+}
 
-.baby{position:relative;margin-top:100px;}
-.pokemon1{position:absolute; top:0; left:210px; background:url(img/baby-01.png) no-repeat; width:110px; height:110px;}
-.pokemon2{position:absolute; top:80px; left:220px; background:url(img/baby-02.png) no-repeat; width:150px; height:110px;}
-.pokemon3{position:absolute; top:140px; left:360px; background:url(img/baby-03.png) no-repeat; width:160px; height:160px;}
-.pokemon4{position:absolute; top:20px; left:480px; background:url(img/baby-05.png) no-repeat; width:210px; height:200px;}
-.pokemon5{position:absolute; top:180px; left:860px; background:url(img/baby-04.png) no-repeat; width:210px; height:200px;}
-.pokemon6{position:absolute; top:90px; left:920px; background:url(img/baby-06.png) no-repeat; width:160px; height:160px;}
-.pokemon7{position:absolute; top:-20px; left:1010px; background:url(img/baby-09.png) no-repeat; width:200px; height:200px;}
-.pokemon8{position:absolute; top:200px; left:1010px; background:url(img/baby-10.png) no-repeat; width:90px; height:90px;}
-.pokemon9{position:absolute; top:-50px; left:950px; background:url(img/baby-07.png) no-repeat; width:90px; height:90px;}
-.pokemon10{position:absolute; top:-150px; left:1100px; background:url(img/baby-08.png) no-repeat; width:110px; height:70px;}
+#info{ text-align:center; font-family:"Microsoft YaHei"; line-height:24px; color:#555; border-top:1px #222 solid; padding:25px 0;}
 
-#ai{font-family:'AntsyPants';}
 </style>
 </head>
-
 <body>
-<div class = "bk">
-	<div class = "box_in">
-    	<h3 class = "fl"></h3>
-        <a href = "javascript:;" class = "fr">扫描二维码</a>
-        <div class = "fr r">
-        	<i class = "phone"></i>
-            <p class = "fl">13132230826</p>
-            <i class = "fl e-mail"></i>
-            <p class = "fl">569833485@qq.com</p>
-        </div>
-    </div>
-    <div class = "font"></div>
-    <div class = "baby">
-    	<span class = "pokemon1"></span>
-    	<span class = "pokemon2"></span>
-    	<span class = "pokemon3"></span>
-    	<span class = "pokemon4"></span>
-    	<span class = "pokemon5"></span>
-    	<span class = "pokemon6"></span>
-    	<span class = "pokemon7"></span>
-    	<span class = "pokemon8"></span>
-    	<span class = "pokemon9"></span>
-    	<span class = "pokemon10"></span>
-    	<span class = "pokemon11"></span>
 
-    </div>
+<div class="wrap">
+	<div class="inner"></div>
+	<div class="x">
+		<div class="x1"></div>
+		<div class="x2"></div>
+		<div class="xInner"></div>
+		<div class="y"></div>
+		<div class="y1"></div>
+		<div class="y2"></div>
+		<div class="yInner"></div>
+		<div class="z"></div>
+		<div class="z1"></div>
+		<div class="z2"></div>
+		<div class="zInner"></div>
+	</div>
 </div>
-<div id = "ai">I'm The King Of The World</div>
+
+<div id="info">
+</div>
+
 </body>
 </html>
