@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+navigator.geolocation.watchPosition(function(ev){
+	var msg = ev.coords;
+	for(var name in msg){
+		document.write(name+':'+msg[name]+'<br>');	
+	}
+},function(ev){
+	alert('失败')
+});
+</script>
+</head>
+
+<body>
+</body>
+</html>
