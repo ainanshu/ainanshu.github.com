@@ -9,7 +9,7 @@ overflow:hidden;
 }
 
 .all_bg {
-
+	transition:1s all ease;
 }
 
 #allcanvas {
