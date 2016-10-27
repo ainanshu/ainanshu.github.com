@@ -1,0 +1,17 @@
+datas:{
+	x:[
+		{
+			ad:{
+				adICon:'images/6756.jpg',
+adIHref:'javascript:;',
+			},
+			tit:[
+				{href:'http://ent.sina.com.cn/zl/',con:'11111'},
+				{href:'http://ent.sina.com.cn/zl/',con:'22222'},
+				{href:'http://ent.sina.com.cn/zl/',con:'333333'}
+			]
+		}
+		
+	]
+}
+

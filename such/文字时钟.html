@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#time{widdth:100%; height:500px; color:#fff; background:black; font-size:100px; text-align:center;}
+</style>
+<script>
+window.onload = function(){
+	var oT = document.getElementById('time');
+	
+	function ToDouble(n){
+		if(n < 10){
+			return '0'+n;	
+		}else{
+			return ''+n;	
+		}
+	}
+	
+	function clock(){
+		var oDate = new Date();
+		var oH = oDate.getHours();
+		var oM = oDate.getMinutes();
+		var oS = oDate.getSeconds();
+		
+		var oY = oDate.getFullYear();
+		var oMon = oDate.getMonth()+1;
+		var oD = oDate.getDate();
+		var oW = oDate.getDay();
+		
+		
+		oT.innerHTML = oY+'年'+oMon+'月'+oD+'日 星期'+oW+' <br/> '+ToDouble(oH)+':'+ToDouble(oM)+':'+ToDouble(oS);
+	}
+	clock();
+	setInterval(clock,1000);
+	
+		
+};
+
+</script>
+</head>
+
+<body>
+<div id = "time"></div>
+</body>
+</html>

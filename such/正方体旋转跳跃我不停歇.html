@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+.box{width:300px; height:300px; margin:100px auto; -webkit-transform-style:preserve-3d; transform:perspective(800px);position:relative;}
+.box div{position:absolute; top:0;left:0; line-height:300px; text-align:center; font-size:50px; width:100%; height:100%;}
+.box .font{background:rgba(255,0,51,.5); transform:translateZ(150px);}
+.box .back{background:rgba(255,153,0,.5); transform:translateZ(-150px) ;}
+.box .left{background:rgba(255,255,0,.5); transform:translateX(-150px) rotateY(90deg);}
+.box .right{background:rgba(102,255,0,.5); transform:translateX(150px) rotateY(-90deg);}
+.box .top{background:rgba(102,204,204,.5); transform:translateY(-150px) rotateX(90deg);}
+.box .bottom{background:rgba(51,51,204,.5); transform:translateY(150px) rotateX(-90deg);}
+
+</style>
+<script>
+window.onload = function(){
+	var oBox = document.querySelector('.box');
+	
+	var X = 0; 
+	var Y = 0;
+	var iSpeedX = 0;
+	var iSpeedY = 0;
+	var oldX = 0; 
+	var oldY = 0;
+	
+	oBox.onmousedown = function(ev){
+		var disX = ev.pageX - X;
+		var disY = ev.pageY - Y;
+		document.onmousemove = function(ev){
+			X = ev.pageX-disX;
+			Y = ev.pageY-disY;
+			oBox.style.transform = 'perspective(800px) rotateX('+-Y/5+'deg) rotateY('+X/5+'deg)';	
+			
+			iSpeedX = ev.pageX-oldX;
+			iSpeedY = ev.pageY-oldY;
+			oldX = ev.pageX;
+			oldY = ev.pageY;
+		};
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+			oBox.timer = setInterval(function(){
+				iSpeedX*=0.95;
+				iSpeedY*=0.95;
+				X+=iSpeedX;
+				Y+=iSpeedY;
+				oBox.style.transform='perspective(800px) rotateX('+-Y/5+'deg) rotateY('+X/5+'deg)';
+				if(Math.abs(iSpeedX)<1)iSpeedX = 0;
+				if(Math.abs(iSpeedY)<1)iSpeedY = 0;
+				
+				if(iSpeedX ==0&&iSpeedY==0){
+					clearInterval(oBox.timer);	
+				}	
+			},100);	
+		};
+		return false;
+	};	
+};
+</script>
+</head>
+
+<body>
+<div class = "box">
+	<div class = "font">前</div>
+	<div class = "back">后</div>
+	<div class = "left">左</div>
+	<div class = "right">右</div>
+	<div class = "top">上</div>
+	<div class = "bottom">下</div>
+</div>
+</body>
+</html>

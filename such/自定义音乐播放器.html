@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>document</title>
+<style>
+	li a.active{
+		background: url(play.gif) no-repeat right center;
+		padding-right: 20px;
+	}
+	#box{
+		width:500px;
+		height:30px;
+		background: #ccc;
+	}
+	#bar{
+		width:0;
+		height: 30px;
+		background: red;
+	}
+</style>
+<script>
+function rnd(n,m){
+	return parseInt(Math.random()*(m-n)+n);
+};
+window.onload=function(){
+	var aLi=document.querySelectorAll('li');
+	var time=document.querySelector('time');
+	var oBar=document.getElementById('bar');
+	var oBox=document.getElementById('box');
+	var aBtn=document.querySelectorAll('input');
+	var oA=new Audio();
+	//用户选择的播放方式
+	var playState=4;
+	//播放的是哪一首歌
+	var inow=0;
+	//记录用户是否是第一次播歌
+	var first=true;
+	//双击换歌，改变class
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].index=i;
+		aLi[i].ondblclick=function(){
+			first=false;
+			inow=this.index;
+			upDataClass();
+			oA.src='mp3/'+this.children[0].innerHTML+'.mp3';
+			oA.play();
+		};
+	}
+	//改变class
+	function upDataClass(){
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].children[0].classList.remove('active');
+		}
+		aLi[inow].children[0].classList.add('active');
+	}
+	//进度条
+	oA.ontimeupdate=function(){
+		var scale=this.currentTime/this.duration;
+		oBar.style.width=scale*500+'px';
+		time.innerHTML=this.currentTime;
+	};
+	//快进，快退
+	oBox.onclick=function(ev){
+		first=false;
+		var scale=(ev.clientX-oBox.offsetLeft)/500;
+		oA.currentTime=scale*oA.duration;
+		oBar.style.width=scale*500+'px';
+	};
+	//暂停
+	aBtn[0].onclick=function(){
+		oA.pause();
+	};
+	//播放
+	aBtn[1].onclick=function(){
+		//判断是否已经播放歌曲
+		if(!oA.currentTime){
+			oA.src='mp3/'+aLi[0].children[0].innerHTML+'.mp3';
+			aLi[0].children[0].classList.add('active');
+		}
+		first=false;
+		oA.play();
+	};
+
+	//单曲循环
+	aBtn[2].onclick=function(){
+		playState=1;
+		if(first){
+			play();
+		}
+	};
+	//随机播放
+	aBtn[3].onclick=function(){
+		playState=2;
+		play();
+	};
+	//顺序播放
+	aBtn[4].onclick=function(){
+		playState=3;
+		if(first){
+			play();
+		}
+	};
+	//列表循环
+	aBtn[5].onclick=function(){
+		playState=4;
+		
+		if(first){
+			play();
+		}
+	};
+
+	//歌曲播放完毕
+	function play(){
+		first=false;
+		if(playState==2){
+			inow=rnd(0,aLi.length);
+		}else if(playState==3){
+			inow++;
+			if(inow==aLi.length){
+				inow=aLi.length-1;
+				return;
+			}
+		}else if(playState==4){
+			inow++;
+			if(inow==aLi.length){
+				inow=0;
+			}
+		}
+		upDataClass();
+		oA.src='mp3/'+aLi[inow].children[0].innerHTML+'.mp3';
+		oA.play();
+	};
+
+	oA.onended=play;
+};	
+</script>
+</head>
+<body>
+	<p>双击播放</p>
+	<ul>
+		<li><a href="javascript:;">千千阙歌</a></li>
+		<li><a href="javascript:;">时间都去哪儿了</a></li>
+		<li><a href="javascript:;">小苹果</a></li>
+		<li><a href="javascript:;">夜的钢琴曲</a></li>
+		<li><a href="javascript:;">雨的印记</a></li>
+	</ul>
+	<div id="box">
+		<div id="bar"></div>
+	</div>
+	<time>00:00</time>
+	<br>
+	<br>
+	<input type="button" value="暂停">
+	<input type="button" value="播放">
+	<input type="button" value="单曲循环">
+	<input type="button" value="随机播放">
+	<input type="button" value="顺序播放">
+	<input type="button" value="列表循环">
+</body>
+</html>

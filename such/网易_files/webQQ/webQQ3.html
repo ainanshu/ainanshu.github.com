@@ -1,0 +1,219 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{ margin:0; padding:0; }
+a{ text-decoration:none; }
+li{ list-style:none; }
+img{ vertical-align:top; }
+body{ background: url(http://pic23.nipic.com/20120918/10031483_133215033311_2.jpg) no-repeat top; background-size: cover; }
+
+.form{ display:-none; width:370px; height:210px; border:1px solid #ccc; position:absolute; left:50%; top:50%; margin-left:-200px; margin-top:-125px; border-radius:10px; box-shadow:10px 10px 10px rgba(0,0,0,0.3); padding-left:40px; line-height:30px; padding-top:40px; background:rgba(0,0,0,0.3); }
+.form label{ color:#fff; }
+.form input{ width:260px; height:30px; border:1px solid #ccc; border-radius:3px; margin-top:30px; vertical-align:bottom; }
+
+.pic{ position:absolute; left:50%; top:-45px; border:1px solid #bbb; margin-left:-45px; }
+.pic span{ position:absolute; top:50%; height:60px; line-height:60px; width:30px; text-align:center; color:#fff; font-size:20px; background:rgba(0,0,0,0.3); margin-top:-30px; display:none; cursor:pointer; }
+.pic .pic-l{ left:0; }
+.pic .pic-r{ right:0; }
+.pic:hover span{ display:block; }
+
+.btn{ margin-top:20px; padding-left:160px; overflow:hidden; }
+.btn span{ cursor:pointer; float:left; width:60px; height:30px; line-height:30px; background:#0CF; text-align:center; color:#fff; margin-left:20px; }
+
+body{ background:url(img/bg.jpg) top; }
+
+.chat{ display:none; width:700px; height:600px; position:absolute; left:50%; top:50%; margin-left:-350px; margin-top:-300px; background:rgba(0,0,0,0.2); border-radius:10px; border:1px solid pink; }
+
+.chat-hd{ border-bottom:2px solid pink; height:110px; color:#fff; padding-top:20px; overflow:hidden; position:relative; }
+.chat-hd img{ border:2px solid #0F0; margin-left:30px; float:left; }
+.chat-hd p{ font-size:30px; line-height:130px; float:left; margin-left:130px; }
+.chat-hd span{ position:absolute; right:10px; top:10px; font-size:18px; background:#fff; color:#ccc; font-weight:bold; text-align:center; line-height:20px; height:20px; width:20px; border-radius:50%; cursor:pointer; }
+
+.msg{ float:left; width:480px; height:468px; border-radius:0 0 0 10px; border-right:2px solid pink; }
+.msg-user{ height:300px; border-bottom:2px solid pink; }
+.msg-user li{ padding:10px; background:rgba(255,255,255,0.5); margin-bottom:10px; }
+.msg-user div{ margin-bottom:10px; }
+.msg-user span{ color:green; }
+.msg-user strong{ color:#f00; }
+
+.user-list{ float:right; width:200px; height:468px; border-radius:0 0 10px 0; border-left:2px solid pink; }
+.user-list li{ height:30px; overflow:hidden; background:rgba(255,255,255,0.5); padding:5px; border-bottom:1px dotted #ccc; }
+.user-list img{ width:30px; float:left; }
+.user-list span{ float:left; line-height:30px; margin-left:15px; color:#93C; width:140px; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; font-family:"微软雅黑"; }
+.msg textarea{ width:100%; height:135px; background:none; border:none; outline:none; resize:none; display:block; color:#fff; font-size:16px; border-bottom:2px solid pink; } 
+.msg input{ float:right; width:100px; height:30px; font-size:16px; }
+.scroll{ width:100%; }
+.scroll-l,.scroll-r{ width:10px; background:yellow; position:absolute; top:132px; border-radius:10px; }
+.scroll-l{ left:470px; height:300px; }
+.scroll-r{ left:690px; height:467px; }
+.scroll .bar{ position:absolute; left:0; top:0; height:50px; width:10px; background:#f00; border-radius:10px; }
+</style>
+<script src="jsonp.js"></script>
+<script>
+window.onload=function (){
+	var oUser=document.getElementById('user');
+	var oPass=document.getElementById('pass');
+	var oRegister=document.getElementById('register');
+	var oPic=document.getElementById('pic');
+	var oPrev=oPic.getElementsByTagName('span')[0];
+	var oNext=oPic.getElementsByTagName('span')[1];
+	var oImg=oPic.getElementsByTagName('img')[0];
+	
+	//url
+	var url='http://zhinengshe.com/exercise/im/api.php';
+	//头像ID
+	var faceID=1;
+	
+	//换头像
+	oPrev.onclick=function (){
+		oImg.alt=oImg.alt-1;
+		if(oImg.alt<1){
+			oImg.alt=9;
+		}
+		oImg.src='img/'+oImg.alt+'.jpg';
+		faceID=oImg.alt;
+	};
+	oNext.onclick=function (){
+		oImg.alt=parseInt(oImg.alt)+1;
+		if(oImg.alt>9){
+			oImg.alt=1;
+		}
+		oImg.src='img/'+oImg.alt+'.jpg';
+		faceID=oImg.alt;
+	};
+	
+	//注册
+	//a=reg&user=用户名&pass=密码&face=头像ID&cb=xxx
+	oRegister.onclick=function (){
+		jsonp({
+			url:url,
+			data:{
+				a:'reg',
+				user:oUser.value,
+				pass:oPass.value,
+				face:faceID
+			},
+			success:function (json){
+				if(!json.err){
+					alert(json.msg);
+				}else{
+					alert(json.msg);
+				}
+			},
+			error:function (){
+				alert('失败');
+			}
+		});
+	};
+};
+</script>
+</head>
+
+<body>
+	<div class="form" id="form">
+		<div class="pic" id="pic">
+        	<span class="pic-l">&lt;</span>
+        	<span class="pic-r">&gt;</span>
+        	<img src="img/1.jpg" alt="1" />
+        </div>
+    	<label for="user">用户名：</label>
+        <input id="user" type="text" value="" />
+        <label for="pass">密&nbsp;码：</label>
+        <input id="pass" type="password" value="" />
+       	<div class="btn">
+        	<span id="register">注册</span>
+            <span>登录</span>
+        </div>
+    </div>
+    
+    <div class="chat">
+    	<div class="chat-hd">
+            <img src="img/7.jpg" alt="" />
+            <p>JavaScript聊天室</p>
+            <span>×</span>
+        </div>
+        <div class="msg">
+        	<ul class="msg-user">
+            	<li>
+                	<div>
+                    	<strong>abc</strong>
+                        <span>2016-7-5 00:00:00</span>
+                    </div>
+                    <p>旭哥好帅！！</p>
+                </li>
+            	<li>
+                	<div>
+                    	<strong>abc</strong>
+                        <span>2016-7-5 00:00:00</span>
+                    </div>
+                    <p>旭哥好帅！！</p>
+                </li>
+            	<li>
+                	<div>
+                    	<strong>abc</strong>
+                        <span>2016-7-5 00:00:00</span>
+                    </div>
+                    <p>旭哥好帅！！</p>
+                </li>
+            </ul>
+            <textarea></textarea>
+            <input type="button" value="发送" />
+        </div>
+        <ul class="user-list">
+        	<li>
+            	<img src="img/3.jpg" />
+                <span>abc</span>
+            </li>
+        	<li>
+            	<img src="img/3.jpg" />
+                <span>abc</span>
+            </li>
+        	<li>
+            	<img src="img/3.jpg" />
+                <span>abc</span>
+            </li>
+        	<li>
+            	<img src="img/3.jpg" />
+                <span>智能社智能社智能社智能社智能社智能社智能社智能社智能社</span>
+            </li>
+        	<li>
+            	<img src="img/3.jpg" />
+                <span>abc</span>
+            </li>
+        </ul>
+        <div class="scroll">
+        	<div class="scroll-l">
+            	<div class="bar"></div>
+            </div>
+            <div class="scroll-r">
+            	<div class="bar"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{ margin:0; padding:0; list-style:none; }
+body{ background:rgba(0,0,0,0.7); }
+ul{ width:133px; height:200px; margin:200px auto; position:relative; transform-style:preserve-3d; }
+li{ position:absolute; left:0; top:0; border-radius:10px; overflow:hidden; box-shadow:0 0 20px #fff; transform:rotate(0deg) translateZ(0); border:1px solid #ccc; }
+</style>
+<script>
+window.onload=function (){
+	var oUl=document.querySelector('ul');
+	var aLi=oUl.children;
+	
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].style.transition='1s all ease '+(11-i)*100+'ms';
+		aLi[i].style.transform='rotateY('+360/11*i+'deg) translateZ(350px)';
+	}
+	
+	var x=0;
+	var y=0;
+	var iSpeedX=0;
+	var iSpeedY=0;
+	var lastX=0;
+	var lastY=0;
+	
+	oUl.onmousedown=function (ev){
+		var disX=ev.pageX-x;
+		var disY=ev.pageY-y;
+		document.onmousemove=function (ev){
+			x=ev.pageX-disX;
+			y=ev.pageY-disY;
+			
+			oUl.style.transform='perspective(2000px) rotateX('+-y/5+'deg) rotateY('+x/5+'deg)';
+			
+			iSpeedX=ev.pageX-lastX;
+			iSpeedY=ev.pageY-lastY;
+			
+			lastX=ev.pageX;
+			lastY=ev.pageY;
+		};
+		document.onmouseup=function (){
+			document.onmousemove=null;
+			document.onmouseup=null;
+			
+			oUl.timer=setInterval(function (){
+				iSpeedX*=0.95;
+				iSpeedY*=0.95;
+				
+				x+=iSpeedX;
+				y+=iSpeedY;
+				
+				oUl.style.transform='perspective(2000px) rotateX('+-y/5+'deg) rotateY('+x/5+'deg)';
+				
+				if(Math.abs(iSpeedX)<1)iSpeedX=0;
+				if(Math.abs(iSpeedY)<1)iSpeedY=0;
+				
+				if(iSpeedX==0&&iSpeedX==0){
+					clearInterval(oUl.timer);
+				}
+				
+			},30);
+		};
+		return false;
+	};
+};
+</script>
+</head>
+
+<body>
+	<ul>
+    	<li><img src="../img2/10.jpg" /></li>
+    	<li><img src="../img2/11.jpg" /></li>
+    	<li><img src="../img2/1.jpg" /></li>
+    	<li><img src="../img2/2.jpg" /></li>
+    	<li><img src="../img2/3.jpg" /></li>
+    	<li><img src="../img2/4.jpg" /></li>
+    	<li><img src="../img2/5.jpg" /></li>
+    	<li><img src="../img2/6.jpg" /></li>
+    	<li><img src="../img2/7.jpg" /></li>
+    	<li><img src="../img2/8.jpg" /></li>
+    	<li><img src="../img2/9.jpg" /></li>
+    </ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

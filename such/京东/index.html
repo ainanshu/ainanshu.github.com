@@ -1,0 +1,692 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{ height:2000px;}
+/*定义字体*/
+@font-face {font-family: 'iconfont';
+    src: url('font/iconfont.eot'); /* IE9*/
+    src: url('font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+*{ padding:0; margin:0;}
+a{ text-decoration:none; color:#666;}
+li{ list-style:none;}
+img{ vertical-align:top; border:none;}
+.fl{ float:left;}
+.fr{ float:right;}
+.clear:after{ content:''; display:block; clear:both;}
+body{ color:#666; font:12px/1.5em 'Microsoft Yahei';}
+input{ background:none; border:none; outline:none;}
+.w{ width:1210px; margin:0 auto;}
+.aside_nav{ width:206px; height:408px; border:2px solid #e4393c; border-top:none; margin-top:20px; background:#ddd;}
+.aside_nav .list{ height:27px; border-top:1px solid #fafafa; border-bottom:1px solid #fff; padding-left:14px; margin-right:6px; }
+.aside_nav ul{ position:relative; padding-top:3px;}
+.aside_nav p{ line-height:26px; position:relative;}
+.aside_nav .arrow{ width:6px; height:9px; background:url(img/sprite.png) -110px -45px; float:right; margin-right:11px; margin-top:11px;}
+.aside_nav .menu{box-shadow:0 0 2px #ccc; width:687px; height:430px; border:1px solid #999; position:absolute; top:3px; left:198px; background:#fff; display:none;}
+.aside_nav .line{ width:20px; height:26px; background:#fff; position:absolute; top:0;left:170px; z-index:2; display:none;}
+/*js用*/
+.aside_nav .hover .menu{ display:block;}
+.aside_nav .hover .line{ display:block;}
+.aside_nav .hover{ background:#fff; border-color:#dddddd;box-shadow:0 0 2px #eee; height:26px;}
+/*life*/
+.life{ overflow:hidden;}
+.life_box{ margin-right:-10px;}
+.life_list{ width:295px; height:190px; overflow:hidden; position:relative; margin:0 10px 10px 0;}
+.life_list img{ transition:all .3s ease-in;}
+.life_list .aside{ position:absolute; top:0; let:0; width:120px; height:160px; background:rgba(255,255,255,0.5); padding-top:30px; padding-left:20px;}
+.life_list:hover img{ transform:translate(-10px,0);}
+.floor_aside{ width:210px; border-bottom:1px solid #999;}
+.floor_aside .tit{ border-bottom:2px solid #999;}
+.floor_aside .tit i{ width:27px; height:38px; background:url(img/20130330C.png) no-repeat -40px 0; font-size:18px; color:#fff; font-style:normal; line-height:30px; text-align:center; }
+.floor_aside .tit span{ font-size:22px; margin-left:35px; line-height:38px; font-weight:bold;}
+.floor_aside .list_box{ border-right:1px solid #999;}
+.floor_aside .big_img .list{ width:59px; float:left;}
+.floor_aside .big_img .img{ float:left;}
+.floor_aside .list{ padding-left:5px; padding-top:5px; }
+.floor_aside .list a{ float:left;width:100px; line-height:25px;}
+.floor_aside .img{ display:block; }
+.tab{ width:790px; position:relative;}
+.tab .tit{ padding-top:8px; border-bottom:2px solid #999;}
+.tab .tit a{ float:left; width:158px; text-align:center; line-height:30px;}
+.tab .line{ height:2px; width:158px; background:#e4393c; position:absolute; top:38px;left:0;}
+.tab .line i{ width:0; height:0; border:5px solid transparent; border-bottom:5px solid #e4393c; position:absolute; top:-10px; left:50%; margin-left:-5px;}
+.tab .con{ position:relative;}
+.tab .con li{ float:left; width:157px; height:180px; border-bottom:1px solid #999; border-right:1px solid #999;}
+.tab .con li a{ display:block; text-align:center;}
+.tab .con .list_mar{ margin-left:474px;}
+.tab .con .list_b{ width:158px;}
+.tab .tab_img{ position:absolute; width:473px; border-right:1px solid #999; height:180px; border-bottom:1px solid #999; left:159px; top:0; background:red;}
+.tab .con .list_nob{ border-right:none;}
+.woman_list{ width:158px; overflow:hidden; border-bottom:1px solid #999;}
+.woman_list a{ height:180px; display:block; overflow:hidden;}
+.woman_list a img{ transition:all .2s ease-in;}
+.woman_list a:hover img{ transform:translate(-10px,0)}
+.woman_list .top_img{ height:181px;}
+.woman_list .big{ height:361px;}
+/*top*/
+.top{ min-width:1210px; height:30px; border-bottom:1px solid #999; background:#f5f5f5;}
+.aboutjd{ line-height:30px;}
+.aboutjd a{ float:left;}
+.aboutjd span{ float:left; margin-right:5px;}
+.aboutjd .coll{ margin-right:20px;}
+.aboutjd .focus{ margin-right:10px;}
+.aboutjd .color_y{ color:#f8b600;}
+.top_nav .icon{ width:28px; height:11px; background:url(img/sprite.png) no-repeat; margin-top:9px;}
+.top_nav li{ margin-left:10px;}
+.top_nav .vip{ background-position:-117px -428px;}
+.top_nav .bjd{ background-position:-120px -445px;}
+.top_nav .phone{ background-position:-128px -360px; width:23px;height:22px; margin-top:5px; transition:all 0.2s ease-in-out;}
+.top_nav .arrow{ width:7px; height:4px; background: url(img/sprite.png) -95px -55px; margin-top:13px; margin-left:9px; transition:all 0.2s ease-in-out;}
+.top_nav a{ line-height:30px;}
+.top_nav .line{ width:0; height:12px; border-left:1px solid #000; margin-top:9px; margin-left:8px;}
+.top_nav .app{position:relative; margin-left:13px; z-index:2;}
+.top_nav .down{ width:250px; height:294px; border:1px solid #999; background:#fff; position:absolute; top:30px; left:-9px; box-shadow:0px 0px 2px #000; display:none;}
+.top_nav .blank{ width:98px; height:27px; border:1px solid #999; border-bottom:none; background:#fff; position:absolute; top:3px; left:-9px; z-index:-1; box-shadow:0px 0px 2px #000; display:none;}
+.top_nav .line2{ width:98px; height:5px; background:#fff; position:absolute; top:27px; left:-8px; z-index:3; display:none;}
+/*js用*/
+.top_nav .hover .line2,.top_nav .hover .blank,.top_nav .hover .down{ display:block;}
+.top_nav .hover .phone{  background-position:-128px -399px;}
+.top_nav .hover .arrow{  background-position:-95px -45px;}
+.top_nav .hover .txt{ color:#e4393c; text-decoration:underline;}
+.logo{ width:158px; height:42px; background:red; margin-top:24px;}
+.logo a{ display:block; height:100%; background:url(img/logo.png); text-indent:-999em;}
+.gifimg{ margin-top:10px; margin-left:13px;}
+.search_box{ width:500px; height:60px;margin-left:28px; margin-top:19px;}
+.search_t .txt{ width:406px; height:30px; border:3px solid #e4393c; border-right:none; padding:0 5px;}
+.search_t .btn{ width:81px; height:36px; background:#e4393c; color:#fff; font-weight:bold; text-align:center; line-height:36px; font-size:14px;}
+.search_box  .search_hot{ line-height:24px;}
+.search_box .hot{ color:#e4393c;}
+
+</style>
+<script>
+window.onload=function(){
+	var oApp=document.getElementById('app');
+	oApp.onmouseover=function(){
+		this.className='fl clear app hover';	
+	}	
+	oApp.onmouseout=function(){
+		this.className='fl clear app';	
+	}
+	var aNavLi=document.getElementById('nav_list').getElementsByTagName('li');	
+	for(var i=0;i<aNavLi.length;i++){
+		aNavLi[i].onmouseover=function(){
+			this.className='list clear hover';	
+		}
+		aNavLi[i].onmouseout=function(){
+			this.className='list clear';	
+		}	
+	}
+}
+</script>
+</head>
+
+<body>
+	<!--top-->
+	<div class="top">
+    	<div class="w clear">
+        	<ul class="aboutjd fl">
+            	<li class="fl clear coll">
+                	<span class="iconfont color_y">&#xf0061;</span>
+                    <a href="#">收藏京东</a>
+                </li>
+            	<li class="fl clear focus">
+                	<span class="iconfont">&#x3433;</span>
+                    <a href="#">关注京东</a>
+                </li>
+            	<li class="fl clear">
+                	<span class="iconfont color_y">&#xe611;</span>
+                    <a href="#"><b>北京</b>[更换]</a>
+                </li>
+            </ul>
+        	<ul class="top_nav fr clear">
+            	<li class="fl clear">
+                    <a href="#" class="fl txt">你好，请登录</a>
+                </li>
+            	<li class="fl clear">
+                    <a href="#" class="fl txt">免费注册</a>
+                    <i class="fl line"></i>
+                </li>
+            	<li class="fl clear">
+                    <a href="#" class="fl txt">我的订单</a>
+                    <i class="fl line"></i>
+                </li>
+            	<li class="fl clear">
+                	<span class="fl icon vip"></span>
+                    <a href="#" class="fl txt">会员俱乐部</a>
+                    <i class="fl line"></i>
+                </li>
+            	<li class="fl clear">
+                	<span class="fl icon bjd"></span>
+                    <a href="#" class="fl txt">企业频道</a>
+                    <i class="fl line"></i>
+                </li>
+            	<li class="fl clear app" id="app">
+                	<span class="fl icon phone"></span>
+                    <a href="#" class="fl txt">手机京东</a>
+                    <b class="fl arrow"></b>
+                    <i class="fl line"></i>
+                    <span class="blank"></span>
+                    <span class="line2"></span>
+                    <div class="down"></div>
+                </li>
+            	<li class="fl clear">
+                    <a href="#" class="fl txt">客户服务</a>
+                    <b class="fl arrow"></b>
+                    <i class="fl line"></i>
+                </li>
+            	<li class="fl clear">
+                    <a href="#" class="fl txt">网站导航</a>
+                    <b class="fl arrow"></b>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--logo,search-->
+    <div class="w clear">
+    	<h1 class="logo fl">
+        	<a href="#">京东</a>
+        </h1>
+        <a href="#" class="fl gifimg"><img src="img/54d82716Nd299293d.gif" /></a>
+        <div class="search_box fl">
+        	<div class="search_t">
+            	<input type="text" class="fl txt" placeholder="流量充值" />
+                <a href="#" class="fl btn">搜索</a>
+            </div>
+        	<div class="search_hot">
+            	<span>热闹搜索：</span>
+                <a href="#" class="hot">上新满减</a>
+                <a href="#">上新满减</a>
+                <a href="#">上新满减</a>
+                <a href="#">上新满减</a>
+                <a href="#">上新满减</a>
+                <a href="#">上新满减</a>
+                <a href="#">上新满减</a>
+                <a href="#">上新满减</a>
+            </div>
+        </div>
+    </div>
+    <!--nav-->
+    <div class="w clear">
+    	<div class="aside_nav fl">
+        	<ul id="nav_list">
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            	<li class="list clear">
+                	<p class="clear fl">
+                    	<a href="#" class="fl">手机、</a>
+                    	<a href="#" class="fl">数码、</a>
+                    	<a href="#" class="fl">京东通讯、</a>
+                        <span class="line"></span>
+                    </p>
+                    <span class="arrow"></span>
+                    <div class="menu"></div>
+                </li>
+            </ul>
+        </div>
+    	<div class="banner fl"></div>
+    	<div class="info fr"></div>
+    </div>
+    <!--life-->
+    <div class="w life">
+    	<ul class="clear life_box">
+        	<li class="fl life_list">
+            	<a href="#">
+                	<img src="img/img4.jpg" />
+                </a>
+                <div class="aside">
+                	<h3>品牌街</h3>
+                    <p>大模大样</p>
+                    <p>大模大样</p>
+                    <ul>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        	<li class="fl life_list">
+            	<a href="#">
+                	<img src="img/img4.jpg" />
+                </a>
+                <div class="aside">
+                	<h3>品牌街</h3>
+                    <p>大模大样</p>
+                    <p>大模大样</p>
+                    <ul>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        	<li class="fl life_list">
+            	<a href="#">
+                	<img src="img/img4.jpg" />
+                </a>
+                <div class="aside">
+                	<h3>品牌街</h3>
+                    <p>大模大样</p>
+                    <p>大模大样</p>
+                    <ul>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        	<li class="fl life_list">
+            	<a href="#">
+                	<img src="img/img4.jpg" />
+                </a>
+                <div class="aside">
+                	<h3>品牌街</h3>
+                    <p>大模大样</p>
+                    <p>大模大样</p>
+                    <ul>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        	<li class="fl life_list">
+            	<a href="#">
+                	<img src="img/img4.jpg" />
+                </a>
+                <div class="aside">
+                	<h3>品牌街</h3>
+                    <p>大模大样</p>
+                    <p>大模大样</p>
+                    <ul>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        	<li class="fl life_list">
+            	<a href="#">
+                	<img src="img/img4.jpg" />
+                </a>
+                <div class="aside">
+                	<h3>品牌街</h3>
+                    <p>大模大样</p>
+                    <p>大模大样</p>
+                    <ul>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        	<li class="fl life_list">
+            	<a href="#">
+                	<img src="img/img4.jpg" />
+                </a>
+                <div class="aside">
+                	<h3>品牌街</h3>
+                    <p>大模大样</p>
+                    <p>大模大样</p>
+                    <ul>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        	<li class="fl life_list">
+            	<a href="#">
+                	<img src="img/img4.jpg" />
+                </a>
+                <div class="aside">
+                	<h3>品牌街</h3>
+                    <p>大模大样</p>
+                    <p>大模大样</p>
+                    <ul>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    	<li>
+                        	·<a href="#">UI殴打</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--floor-->
+    <div class="w clear">
+    	<div class="floor_aside fl">
+        	<div class="tit clear">
+            	<i class="fl">1F</i>
+                <span class="fl">家电通讯</span>
+            </div>
+            <div class="list_box">
+            	<div class="list clear">
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            </div>
+            	<a href="#" class="img"><img src="img/54d80e47N813679d7.jpg" /></a>
+            </div>
+        </div>
+    	<div class="tab fl">
+        	<div class="tit clear">
+            	<a href="#">特价商城</a>
+            	<a href="#">特价商城</a>
+            	<a href="#">特价商城</a>
+            	<a href="#">特价商城</a>
+            	<a href="#">特价商城</a>
+            </div>
+            <div class="line">
+            	<i></i>
+            </div>
+            <div class="con">
+            	<ul class="clear">
+                	<li class="fl list_b">
+                    	<a href="#">
+                        	<img src="img/54c9e926Nbd76dd17.jpg" />
+                        </a>
+                        <p>飘飘枯公报私仇 船舶的互相支持械</p>
+                        <span>￥159：00</span>
+                    </li>
+                	<li class="fl list_mar list_nob"></li>
+                	<li class="fl list_b"></li>
+                	<li class="fl"></li>
+                	<li class="fl"></li>
+                	<li class="fl"></li>
+                	<li class="fl list_nob"></li>
+                </ul>
+                <div class="tab_img"></div>
+            </div>
+        </div>
+    	<div class="brand fl"></div>
+    </div>
+    <div class="w clear">
+    	<div class="floor_aside fl">
+        	<div class="tit clear">
+            	<i class="fl">3F</i>
+                <span class="fl">家电通讯</span>
+            </div>
+            <div class="list_box big_img clear">
+            	<div class="list clear">
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            	<a href="#">手机</a>
+            </div>
+            	<a href="#" class="img"><img src="img/54aca226N0e66cf68.jpg" /></a>
+            </div>
+        </div>
+    	<div class="tab fl">
+        	<div class="tit clear">
+            	<a href="#">特价商城</a>
+            	<a href="#">特价商城</a>
+            	<a href="#">特价商城</a>
+            	<a href="#">特价商城</a>
+            	<a href="#">特价商城</a>
+            </div>
+            <div class="line">
+            	<i></i>
+            </div>
+            <div class="con">
+            	<div class="woman_list fl">
+                	<a href="#" class="top_img">
+                    	<img src="img/54d42579N49de3961.jpg" />
+                    </a>
+                	<a href="#">
+                    	<img src="img/54d42579N49de3961.jpg" />
+                    </a>
+                </div>
+            	<div class="woman_list fl">
+                	<a href="#" class="big">
+                    	<img src="img/54d45c0eN8b708076.jpg" />
+                    </a>
+                </div>
+            	<div class="woman_list fl">
+                	<a href="#" class="top_img">
+                    	<img src="img/54d42579N49de3961.jpg" />
+                    </a>
+                	<a href="#">
+                    	<img src="img/54d42579N49de3961.jpg" />
+                    </a>
+                </div>
+            	<div class="woman_list fl">
+                	<a href="#" class="big">
+                    	<img src="img/54d45c0eN8b708076.jpg" />
+                    </a>
+                </div>
+            	<div class="woman_list fl">
+                	<a href="#" class="top_img">
+                    	<img src="img/54d42579N49de3961.jpg" />
+                    </a>
+                	<a href="#">
+                    	<img src="img/54d42579N49de3961.jpg" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    	<div class="brand fl"></div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
