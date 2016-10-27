@@ -1,3 +1,12 @@
+//rem标准
+	(function(win,doc){
+		win.addEventListener('resize',fontSize,false);
+		fontSize();
+		function fontSize(){
+			doc.documentElement.style.fontSize=doc.documentElement.clientWidth/25+'px';
+		}
+	})(window,document)
+ 
         window.onload = function() {
             var oBox = document.getElementById('box');
             var oPrev = oBox.children[0];
@@ -9,12 +18,12 @@
             var iNow = 0;
 
             oBox.onmouseover = function() {
-                move(oPrev, {opacity: 1});
-                move(oNext, {opacity: 1});
+                moveAll(oPrev, {opacity: 1});
+                moveAll(oNext, {opacity: 1});
             };
             oBox.onmouseout = function() {
-                move(oPrev, {opacity: 0});
-                move(oNext, {opacity: 0});
+                moveAll(oPrev, {opacity: 0});
+                moveAll(oNext, {opacity: 0});
             };
 
             // 复制一份内容
@@ -82,14 +91,6 @@
                 },30);
             }
         };
-//rem标准
-	(function(win,doc){
-		win.addEventListener('resize',fontSize,false);
-		fontSize();
-		function fontSize(){
-			doc.documentElement.style.fontSize=doc.documentElement.clientWidth/25+'px';
-		}
-	})(window,document)
 
 //导航栏
 function getPos(obj) {
@@ -138,20 +139,20 @@ function through(obj){
 		var dir=getDir(obj,oEvent);
 		switch(dir){
 			case 0:
-				oLi.style.left='200px';
+				oLi.style.left='4rem';
 				oLi.style.top=0;
 				break;
 			case 1:
 				oLi.style.left=0;
-				oLi.style.top='200px';
+				oLi.style.top='4rem';
 				break;
 			case 2:
-				oLi.style.left='-200px';
+				oLi.style.left='-4rem';
 				oLi.style.top=0;
 				break;
 			case 3:
 				oLi.style.left=0;
-				oLi.style.top='-200px';
+				oLi.style.top='-4rem';
 				break;
 		}
 		move(oLi,{left:0,top:0})

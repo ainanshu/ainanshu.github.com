@@ -139,7 +139,9 @@ body {
 .show{width:25rem;height:10rem; overflow:hidden; position:relative;}
 
 .show img{width:25rem; margin-top:-4.5rem; }
-.show ul{width:26rem; height:10rem; background:rgba(0,0,0,0.4); position:absolute; top:0; left:0; }
+.show ul{width:25rem; height:10rem;  position:absolute; top:0; left:0;}
+.show ul li{width:6.25rem; height:10rem; background:rgba(0,0,0,0.4); text-align:center; line-height:10rem; color:#fff; font-size:0.5rem; }
+.show ul li:hover{background:rgba(0,0,0,0.8);}
 .white{width:25rem;height:10rem; background:#f3f2f1;}
 .ject{
 	width:25rem;
@@ -157,10 +159,27 @@ body {
 	padding-top:1rem;
 	
 }
-.ject .walls{width:18rem; height:9rem; border:1px solid #ccc; margin:0 auto;}
-.ject .walls ul{ width:200px; height:200px; background:#ccc; float:left; margin:20px; position:relative; overflow:hidden; }
-.ject .walls ul li{ width:200px; height:200px; background:#162637; position:absolute; left:0; top:-200px; font-size:20px; line-height:200px; }
-.ject .walls .p1{}
+.ject .walls{width:19.5rem; height:10rem; border:1px solid #ccc; margin:0 auto;}
+.ject .walls ul{ width:4rem; height:4rem; background:#ccc; float:left; margin:0.4rem; position:relative; overflow:hidden; }
+.ject .walls ul li{ width:4rem; height:4rem; background:#e9ac26; position:absolute; left:0; top:-4rem; font-size:20px; line-height:4rem; opacity:0.9;}
+
+.ject .walls .p1{ background:url(../src/1.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p2{ background:url(../src/2.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p3{ background:url(../src/3.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p4{ background:url(../src/4.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p5{ background:url(../src/5.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p6{ background:url(../src/6.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p7{ background:url(../src/7.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p8{ background:url(../src/8.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p1 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p2 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p3 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p4 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p5 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p6 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p7 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p8 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+
 .ject .more{	
 	width:3rem;
 	height:1rem;

@@ -5,7 +5,7 @@ function getStyle(obj,name) {
     return (obj.currentStyle || getComputedStyle(obj,false))[name];
 }
 
-function move(obj,json,options) {
+function moveAll(obj,json,options) {
     options = options || {};
     options.duration = options.duration || 500;
     options.easing = options.easing || 'ease-out';
@@ -45,7 +45,7 @@ function move(obj,json,options) {
                 obj.style.opacity = cur;
                 obj.style.filter = 'alpha(opacity:'+cur*100+')';
             } else {
-                obj.style[name] = cur/50 + 'rem';
+                obj.style[name] = cur + 'px';
             }
         }
         if (n == count) {
