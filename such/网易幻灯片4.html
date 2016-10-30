@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社 - www.zhinengshe.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box {
+            width: 600px;
+            height: 300px;
+            position: relative;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        #box ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #box ul li {
+            width: 600px;
+            height: 300px;
+            float: left;
+            line-height: 300px;
+            text-align: center;
+            font-size: 250px;
+            color: #fff;
+        }
+
+        #box ol {
+            position: absolute;
+            width: 400px;
+            left: 50%;
+            margin-left: -200px;
+            bottom: 10px;
+        }
+        #box ol li {
+            width: 80px;
+            height: 20px;
+            background: #194508;
+            float: left;
+            margin: 10px;
+            position: relative;
+        }
+        #box ol li span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0px;
+            height: 20px;
+            background: #fffc4e;
+        }
+
+    </style>
+    <script src="move_all.js"></script>
+    <script>
+        window.onload = function() {
+            var oBox = document.getElementById('box');
+            var oUl = oBox.children[0];
+            var oOl = oBox.children[1];
+            var aLi = oUl.children;
+            var aSpan = oOl.getElementsByTagName('span');
+
+            // 复制一份内容
+            oUl.innerHTML += oUl.innerHTML;
+            // 重新计算宽度
+            oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px';
+            var iNow = 0;
+            function next() {
+                move(aSpan[iNow%aSpan.length], {
+                    width: 80
+                },{
+                    easing: 'linear',
+                    complete: function() {
+                        iNow++;
+                        for (var i = 0; i < aSpan.length; i++) {
+                            aSpan[i].style.width = 0;
+                        }
+                        startMove(oUl,-iNow*aLi[0].offsetWidth,next);
+                    }
+                });
+            }
+            next();
+
+            var left = 0;
+            var timer = null;
+            var W = oUl.offsetWidth/2;
+            function startMove(obj,iTarget,complete) {
+                clearInterval(timer);
+                var start = left; // 起点
+                var dis = iTarget - start; // 总距离
+                var count = Math.floor(1000/30); // 总次数
+
+                var n = 0; // 当前走了多少次
+                timer = setInterval(function(){
+                    n++;
+
+                    var a = 1- n/count;
+                    var cur = start + dis*(1-a*a*a);
+
+                    left = cur;
+                    obj.style.left = left%W + 'px';
+
+                    if (n == count) {
+                        clearInterval(timer);
+                        complete && complete();
+                    }
+                },30);
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li style="background: #399">0</li>
+            <li style="background: #e74c3c">1</li>
+            <li style="background: #5be91b">2</li>
+            <li style="background: #ff61d4">3</li>
+        </ul>
+        <ol>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+        </ol>
+    </div>
+</body>
+</html>

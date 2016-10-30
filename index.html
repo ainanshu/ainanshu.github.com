@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="styles/common.css" />
+<style>
+#button{width:50px; height:50px; background:#fff; border-radius:50%; position:absolute; top:20px; right:20px; overflow:hidden; cursor:pointer; z-index:2;}
+#button span{width:30px; height:5px; background:#009966; display:block; border-radius:5px;  margin-bottom:5px; margin-left:10px; } 
+#s1{margin-top:10px;}
+
+#round{width:0px; height:0px; position:absolute; top:-100px; right:-100px; background:#fff; z-index:3; border-radius:50%;transform:scale(1); transition:1s all ease; opacity:1; }
+#round #close{width:40px; height:40px; display:none;position:absolute; right:130px; top:140px; }
+#round #close i{width:40px; height:5px; background:#009966;border-radius:5px; transform:rotate(45deg); display:block; }
+#round #close i:nth-child(1){transform:translateY(4px) rotate(-45deg);}
+
+#reseum{width:300px; height:200px;   position:absolute; top:200px; right:-100px; z-index:4;text-align:center; font-family:'Verdana'; font-size:20px;  transition:1s all ease; opacity:0;}
+#reseum a{ display:block;margin-bottom:20px; text-decoration:none; color:#009966;}
+</style>
+
+<title>无标题文档</title>
+</head>
+
+<body>
+
+	<div class="all_bg">
+		<div id="allcanvas">
+			<canvas id="canvas1"></canvas>
+			<canvas id="canvas2"></canvas>
+		</div>
+        <div id = "button">
+			<span id = "s1"></span>        
+			<span id = "s2"></span>        
+			<span id = "s3"></span>  
+        </div>          
+        <div id = "round">
+			<a href= "javascript:;" id = "close">
+            	<i></i>
+            	<i></i>
+            </a>
+            <div id= "reseum">
+            	<a href = "web.html">about/关于我</a>
+            	<a href = "web.html">education/教育经历</a>
+            	<a href = "more.html">experience/项目案例</a>
+            	<a href = "more.html">call/联系我</a>
+            </div>      
+        </div>      
+
+	</div>
+    <script>
+		var oBtn = document.getElementById('button');
+		var oRound = document.getElementById('round');
+		var oClose = document.getElementById('close');
+		var oReseum = document.getElementById('reseum');
+		oBtn.onclick = function(){
+			oRound.style.opacity = '0.8';
+			oRound.style.width = '500px';
+			oRound.style.height = '500px';
+			oBtn.style.display = 'none';
+			oClose.style.display = 'block';
+			oReseum.style.opacity = '1';
+			oReseum.style.right = '120px';
+		};
+		oClose.onclick = function(){
+			oBtn.style.display = 'block';
+			oRound.style.opacity = '1';
+			oRound.style.width = '0';
+			oRound.style.height = '0';
+			oClose.style.display = 'none';
+			oReseum.style.opacity = '0';
+			oReseum.style.right = '-120px';
+		};
+    </script>
+	<script src="js/main.js"></script>
+    <script src="js/commonFunctions.js"></script>
+    <script src="js/background.js"></script>
+	<script src="js/ane.js"></script>
+    <script src="js/fruit.js"></script>
+    <script src="js/mom.js"></script>
+    <script src="js/collision.js"></script>
+    <script src="js/baby.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/wave.js"></script>
+    <script src="js/helo.js"></script>
+    <script src="js/dust.js"></script>
+</body>
+</html>

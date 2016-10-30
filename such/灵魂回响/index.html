@@ -1,0 +1,649 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/base.css" />
+<style>
+@font-face {font-family: 'iconfont';
+    src: url('font/iconfont.eot'); /* IE9*/
+    src: url('font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+
+body{font-size:12px; font-family:'Microsoft Yahei'; background: #1c1a25 url(img/con_bg.jpg) no-repeat center 55px; color:#9ca7ca; height:2626px;}
+.head{ height:55px; min-width:1000px; background:#f9f9f9 url(img/nav_bg.png);}
+.head_in{ width:1000px; margin:0 auto;}
+.logo{ float:left; width:113px; height:36px; margin-top:6px;}
+.logo a{ display:block; height:36px; text-indent:-999em; background:url(img/logo.png);}
+.menu{ float:right; border-left:1px solid #999;}
+.menu li{ border-right:1px solid #999; height:50px; position:relative;}
+.menu li a{ display:block; padding:0 16px 0 28px; position:relative; z-index:2;}
+.menu li span{ float:left; line-height:50px;}
+.menu li i{ float:left; width:0; height:0; border:4px solid transparent; border-top:4px solid #676868; margin-top:23px; margin-left:6px; transition:all 0.3s ease-in;}
+.menu_down{ position:absolute; top:50px;right:-1px; border:1px solid #999; width:328px; height:267px; background:#fff; display:none;}
+.register{ float:right; margin-right:10px;}
+.register a{ margin-left:20px;}
+.register i{ width:24px; height:24px; background:url(img/sprite.png); float:left; margin-top:11px; margin-right:5px; transition:all 0.3s ease-in-out;}
+.register i:hover{ transform:rotate(360deg) scale(2);}
+.register .zhuce{ background-position: 0 -165px;}
+.register .money{ background-position: -24px -165px;}
+.register .you{ background-position: -48px -165px;}
+.register span{ float:left; line-height:50px; color:#000;}
+/*JS用*/
+.list_hover a{ border-bottom:1px solid #fff;}
+.list_hover .menu_down{ display:block;}
+.list_hover i{ transform:rotate(180deg);}
+
+.nav_box{ width:1000px; height:550px; background:url(img/header_main.jpg); margin:0 auto; overflow:hidden;}
+.biglogo{ width:190px; height:100px; background:url(img/logo.gif); float:left;}
+.nav{ margin-right:-14px;}
+.nav li{ width:90px; position:relative;}
+.nav_list{ margin-top:38px; display:block;}
+.nav_list span{ display:block; font-size:16px; color:#bebebe; text-align:center;}
+.nav_list b{ color:#bebebe; text-align:center; display:block; font-weight:normal;}
+.nav_down{display:none; width:86px; height:83px; padding-top:27px; background:url(img/nav_new_hover.jpg); position:absolute; top:0; left:2px;}
+.nav_down a{ position:relative; display:block; line-height:24px; text-align:center;}
+.nav_down a i{ display:none; position:absolute; width:0; height:0; border:3px solid transparent; border-left:3px solid #f3ca90; left:14px; top:9px;}
+.nav_down a:hover{ text-decoration:underline; color:#f3ca90;}
+.nav_down a:hover i{ display:block;}
+/*JS用*/
+.nav_hover .nav_down{display:block;}
+.load_box{ width:1000px; margin:0 auto;}
+.load_l{ width:618px;}
+.load_nav { height:110px; background:url(img/sprite.jpg); width:617px;}
+.load_nav a{ float:left; width:100px; height:110px; }
+.load_nav .gameload{ width:217px;}
+.load_nav .gameload:hover{ background:url(img/sprite.jpg) 0 -110px;}
+.load_nav .load_reg:hover{background:url(img/sprite.jpg) -217px -110px;}
+.load_nav .money:hover{background:url(img/sprite.jpg) -317px -110px;}
+.load_nav .duihuan:hover{background:url(img/sprite.jpg) -417px -110px;}
+.load_nav .newuser:hover{background:url(img/sprite.jpg) -517px -110px;}
+.load_r{ width:382px;}
+.tab_img{ border:1px solid #443b4f; border-top:none; width:615px; position:relative;}
+.tab_img a{ display:none;}
+.tab_img .show{ display:block;}
+.tab_img img{ width:615px; height:302px;}
+.tab_img div{ position:absolute; bottom:10px; right:8px;}
+.tab_img span{ float:left; width:14px; height:14px; background:#3a3e47; border-radius:50%; margin-right:4px; cursor:pointer;}
+.tab_img .cur{ background:#d0290a;}
+.serve{ height:49px; background:url(img/sprite.png) no-repeat -260px -104px; margin-top:6px; margin-left:17px; padding-top:6px;}
+.serve p{ margin-left:80px; line-height:22px; height:22px;}
+.serve a{ color:#f00000;}
+.visit{ height:41px; border-top:1px solid #433b4f; border-bottom:1px solid #5d616c; background:url(img/sprite.jpg) 0 -220px; width:381px; margin-top:4px;}
+.visit p{ line-height:41px;margin-left:5px;}
+.visit p span{ color:#f93d1a; text-decoration:underline;}
+.visit p i{ width:14px; height:14px; background:url(img/sprite.png) -79px -165px; float:right; margin-left:2px; margin-top:14px;}
+.visit div{ margin-left:30px; width:198px;}
+.visit div span{ line-height:41px;}
+.visit div a{ width:41px; height:41px;  }
+.visit .qq:hover{ background:url(img/sprite.jpg) -486px -221px;}
+.visit .sina{ margin-right:7px;}
+.visit .sina:hover{ background:url(img/sprite.jpg) -442px -221px;}
+.visit .winxin{ margin-right:7px; }
+.visit .winxin:hover{ background:url(img/sprite.jpg) -398px -221px;}
+.tab_news{ background:#322e3f; height:304px; border-bottom:1px solid #433b4f;}
+.tab_news .btn{ background:url(img/sprite.png) 0 -324px; height:57px;}
+.tab_news .btn span{ width:95px; text-align:center; line-height:57px; color:#fff;}
+.tab_news .btn .cur{ background:url(img/sprite.png) 0 -104px;}
+.tab_news li{ padding-top:17px; display:none;}
+.tab_news .show{ display:block;}
+.tab_news .tit{ width:347px; height:35px; background:url(img/sprite.png) 0 -452px; margin-left:17px; text-align:center; color:#ff391b; font-weight:bold; font-size:16px; line-height:35px;}
+.tab_news .txt{padding:12px 16px 0 25px;}
+.tab_news .txt p{ height:26px;}
+.news_more a{ margin-right:16px;}
+.news_more i{ width:14px; height:14px; background:url(img/sprite.png) -98px -165px; margin-top:2px; margin-right:2px;}
+.active_box{ width:1000px; margin:30px auto 0;}
+.active_tab{ width:656px; height:346px; border:1px solid #433b4f;}
+.active_tab .btn{ background:url(img/sprite.png) 0 -384px; height:59px;}
+.active_tab .btn span{font-size:14px; color:#fff; width:131px; line-height:59px; text-align:center;}
+.active_tab .btn  .cur{ background:url(img/sprite.png) -98px -102px;}
+.active_tab  a{ display:none;}
+.active_tab .show{ display:block;}
+.active_tab  a img{ width:656px; height:287px;}
+.active_r{ width:320px; height:346px;}
+.active_r h3 { height:26px; line-height:26px; color:#f3ca82; font-size:18px; font-weight:normal;}
+.active_r h3 i{ width:26px; height:26px; background:url(img/sprite.png) -272px -167px; margin-right:15px;}
+.opa_img{ margin-top:18px; border:1px solid #433b4f; position:relative;}
+.opa_img a{ display:block;}
+.opa_img .opa{ position:absolute; height:36px; width:100%; background:rgba(0,0,0,.5); bottom:0;left:0; line-height:36px; color:#fff;}
+.opa_img p{ color:#a997c3;}
+.opa_img .opa i{ color:#a997c3; margin-right:3px; transition:font-size .3s ease-in; }
+.opa_img .opa i:hover{ font-size:40px;}
+.active_txt{ margin-top:16px;}
+.active_txt li{ height:25px; background:url(img/sprite.jpg) 0 -530px; margin-bottom:3px; overflow:hidden; line-height:25px;}
+.active_txt a{ float:left; margin-left:28px;}
+.active_txt span{ float:right; margin-right:11px;}
+.con_nav{ width:1000px; margin:0 auto;}
+.con_nav_l{ width:214px;}
+.slide{ position:relative;}
+.slide img{ width:214px; height:262px; display:none;}
+.slide .show{ display:block;}
+.slide span{ position:absolute; top:50%; margin-top:-30px; font-size:40px; color:#fff; cursor:pointer;}
+.slide .btn_l{ right:2px;}
+.slide .btn_r{ left:2px;}
+.tuzi{ width:215px; height:268px; background:url(img/examen.jpg); display:block; transition:all 0.4s ease-in;}
+.tuzi2{ overflow:hidden;}
+.tuzi2 img{transition:all 0.4s ease-in;}
+.tuzi2 img:hover{ transform:translate(-215px,0);}
+.tuzi:hover{ margin-left:-215px;}
+.con_nav_c{ width:423px;}
+.con_nav_r{ width:320px;}
+</style>
+<script>
+window.onload=function(){
+	var oMenuBth=document.getElementById('menu_btn');
+	oMenuBth.onmouseover=function(){
+		this.className='fl list_hover';	
+	}
+	oMenuBth.onmouseout=function(){
+		this.className='fl';	
+	}
+	
+	var oNav=document.getElementById('nav');
+	var aNavBtn=oNav.getElementsByTagName('li');
+	for(var i=0;i<aNavBtn.length;i++){
+		aNavBtn[i].onmouseover=function(){
+			var oDiv=this.getElementsByTagName('div')[0];
+			if(oDiv){
+				this.className='fl nav_hover';		
+			}
+		}
+		aNavBtn[i].onmouseout=function(){
+			var oDiv=this.getElementsByTagName('div')[0];
+			if(oDiv){
+				this.className='fl';		
+			}	
+		}	
+	}
+	
+	var oTabImg=document.getElementById('tab_img');
+	var aTabImga=oTabImg.getElementsByTagName('a');
+	var aTabImgbtn=oTabImg.getElementsByTagName('span');
+	tab(aTabImgbtn,aTabImga);
+	
+	var oTabNews=document.getElementById('tab_news');
+	var aTabNewsli=oTabNews.getElementsByTagName('li');
+	var aTabNewsbtn=oTabNews.getElementsByTagName('div')[0].getElementsByTagName('span');
+	tab(aTabNewsbtn,aTabNewsli);
+	
+	var oActiveTab=document.getElementById('active_tab');
+	var aActiveTabbtn=oActiveTab.getElementsByTagName('span');
+	var aActiveTaba=oActiveTab.getElementsByTagName('a');
+	tab(aActiveTabbtn,aActiveTaba);
+	
+	function tab(btn,box){
+		for(var i=0;i<btn.length;i++){
+			btn[i].index=i;
+			btn[i].onmouseover=function(){
+				for(var i=0;i<btn.length;i++){
+					btn[i].className='fl';
+					box[i].className='';	
+				}
+				this.className='fl cur';
+				box[this.index].className='show';	
+			}	
+		}	
+	}
+	var oSlide=document.getElementById('slide');
+	var aSlide_l=oSlide.getElementsByTagName('span')[1];
+	var aSlide_r=oSlide.getElementsByTagName('span')[0];
+	var aImg=oSlide.getElementsByTagName('img');
+	var iNow=0;
+	aSlide_r.onclick=function(){
+		iNow++;
+		for(var i=0;i<aImg.length;i++){
+			aImg[i].className='';	
+		}
+		if(iNow==6){
+			iNow=0;	
+		}
+		aImg[iNow].className='show';
+	}
+	aSlide_l.onclick=function(){
+		iNow--;
+		for(var i=0;i<aImg.length;i++){
+			aImg[i].className='';	
+		}
+		if(iNow==-1){
+			iNow=5;	
+		}
+		aImg[iNow].className='show';
+	}
+	
+}
+</script>
+</head>
+
+<body>
+	<!--head-->
+    <div class="head">
+    	<div class="head_in clear">
+        	<h1 class="logo">
+            	<a href="#">灵魂回响</a>
+            </h1>
+            <ul class="menu clear">
+            	<li class="fl list">
+                	<a href="#" class="clear" >
+                    	<span>客服</span>
+                        <i></i>
+                    </a>
+                </li>
+            	<li class="fl" id="menu_btn">
+                	<a href="#" class="clear" >
+                    	<span>畅游全服务</span>
+                        <i></i>
+                    </a>
+                    <div class="menu_down"></div>
+                </li>
+            	<li class="fl list">
+                	<a href="#" class="clear" >
+                    	<span>畅游全游戏</span>
+                        <i></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="register clear">
+            	<a href="#" class="fl clear">
+                	<i class="zhuce"></i>
+                    <span>注册</span>
+                </a>
+            	<a href="#" class="fl clear">
+                	<i class="money"></i>
+                    <span>充值</span>
+                </a>
+            	<a href="#" class="fl clear">
+                	<i class="you"></i>
+                    <span>畅游+</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--nav-->
+    <div class="nav_box clear">
+    	<h2 class="biglogo"></h2>
+        <ul class="nav fr clear" id="nav">
+        	<li class="fl">
+            	<a href="#" class="nav_list">
+                	<span>首页</span>
+                    <b>HOME</b>
+                </a>
+            </li>
+        	<li class="fl">
+            	<a href="#" class="nav_list">
+                	<span>新闻公告</span>
+                    <b>NEWS</b>
+                </a>
+                <div class="nav_down">
+                	<a href="#"><i></i>游戏新闻</a>
+                	<a href="#"><i></i>官方公告</a>
+                </div>
+            </li>
+        	<li class="fl">
+            	<a href="#" class="nav_list">
+                	<span>新闻公告</span>
+                    <b>NEWS</b>
+                </a>
+                <div class="nav_down">
+                	<a href="#"><i></i>游戏新闻</a>
+                	<a href="#"><i></i>官方公告</a>
+                </div>
+            </li>
+        	<li class="fl">
+            	<a href="#" class="nav_list">
+                	<span>新闻公告</span>
+                    <b>NEWS</b>
+                </a>
+            </li>
+        	<li class="fl">
+            	<a href="#" class="nav_list">
+                	<span>新闻公告</span>
+                    <b>NEWS</b>
+                </a>
+            </li>
+        	<li class="fl">
+            	<a href="#" class="nav_list">
+                	<span>新闻公告</span>
+                    <b>NEWS</b>
+                </a>
+            </li>
+        	<li class="fl">
+            	<a href="#" class="nav_list">
+                	<span>新闻公告</span>
+                    <b>NEWS</b>
+                </a>
+                <div class="nav_down">
+                	<a href="#"><i></i>游戏新闻</a>
+                	<a href="#"><i></i>官方公告</a>
+                </div>
+            </li>
+        	<li class="fl">
+            	<a href="#" class="nav_list">
+                	<span>新闻公告</span>
+                    <b>NEWS</b>
+                </a>
+            </li>
+        	<li class="fl last">
+            	<a href="#" class="nav_list">
+                	<span>新闻公告</span>
+                    <b>NEWS</b>
+                </a>
+                <div class="nav_down">
+                	<a href="#"><i></i>游戏新闻</a>
+                	<a href="#"><i></i>官方公告</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--load_box-->
+    <div class="load_box clear">
+    	<div class="fl load_l">
+        	<div class="load_nav clear">
+            	<a href="#" class="gameload"></a>
+            	<a href="#" class="load_reg"></a>
+            	<a href="#" class="money"></a>
+            	<a href="#" class="duihuan"></a>
+            	<a href="#" class="newuser"></a>
+            </div>
+            <div class="tab_img" id="tab_img">
+            	<a href="#" class="show"><img src="img/shenshe.jpg" /></a>
+            	<a href="#"><img src="img/img1.jpg" /></a>
+            	<a href="#"><img src="img/img2.png" /></a>
+            	<a href="#"><img src="img/img3.jpg" /></a>
+            	<a href="#"><img src="img/img4.jpg" /></a>
+                <div class="clear">
+                	<span class="cur"></span>
+                	<span></span>
+                	<span></span>
+                	<span></span>
+                	<span></span>
+                </div>
+            </div>
+        </div>
+    	<div class="fl load_r">
+        	<div class="serve">
+            	<p>电信一区<a href="#">【元素殿堂】</a>欢迎进驻</p>
+            	<p>电信一区<a href="#">【元素殿堂】</a>欢迎进驻</p>
+            </div>
+            <div class="visit clear">
+            	<p class="fl">距上次访问有<span>200</span>条更新<i></i></p>
+                <div class="fl clear">
+                	<span class="fl">关注：</span>
+                    <a href="#" class="fr qq"></a>
+                    <a href="#" class="fr sina"></a>
+                    <a href="#" class="fr winxin"></a>
+                </div>
+            </div>
+            <div class="tab_news" id="tab_news">
+            	<div class="btn clear">
+                	<span class="fl">综合</span>
+                	<span class="fl cur">新闻</span>
+                	<span class="fl">公告</span>
+                	<span class="fl">媒体</span>
+                </div>
+                <ul>
+                	<li class="show">
+                    	<p class="tit">1111114月8号大版开户新职业</p>
+                        <div class="txt">
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        </div>
+                        <div class="news_more clear">
+                        	<a href="#" class="fr">更多信息&gt;</a>
+                            <i class="fr"></i>
+                        </div>
+                    </li>
+                	<li>
+                    	<p class="tit">222224月8号大版开户新职业</p>
+                        <div class="txt">
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        </div>
+                        <div class="news_more clear">
+                        	<a href="#" class="fr">更多信息&gt;</a>
+                            <i class="fr"></i>
+                        </div>
+                    </li>
+                	<li>
+                    	<p class="tit">33334月8号大版开户新职业</p>
+                        <div class="txt">
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        </div>
+                        <div class="news_more clear">
+                        	<a href="#" class="fr">更多信息&gt;</a>
+                            <i class="fr"></i>
+                        </div>
+                    </li>
+                	<li>
+                    	<p class="tit">4月8号大版开户新职业</p>
+                        <div class="txt">
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        	<p class="clear">
+                            	<a href="#" class="fl">【新闻】两大满级副本特色揽终极BOSS曝光</a>
+                                <span class="fr">03/24</span>
+                            </p>
+                        </div>
+                        <div class="news_more clear">
+                        	<a href="#" class="fr">更多信息&gt;</a>
+                            <i class="fr"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--active_box-->
+    <div class="active_box clear">
+    	<div class="active_tab fl" id="active_tab">
+        	<div class="btn clear">
+            	<span class="fl cur">哈哈</span>
+            	<span class="fl">嘿嘿</span>
+            	<span class="fl">嘎嘎</span>
+            	<span class="fl">哇哇</span>
+            	<span class="fl">谢谢</span>
+            </div>
+            <a href="#" class="show"><img src="img/img1.jpg" /></a>
+            <a href="#"><img src="img/img5.png" /></a>
+            <a href="#"><img src="img/img2.png" /></a>
+            <a href="#"><img src="img/img3.jpg" /></a>
+            <a href="#"><img src="img/img4.jpg" /></a>
+        </div>
+    	<div class="active_r fr">
+        	<h3 class="clear">
+            	<i class="fl"></i>
+                <span class="fl">活动中心</span>
+            </h3>
+            <div class="opa_img">
+            	<a href="#"><img src="img/1.jpg" /></a>
+                <div class="opa clear">
+                	<span class="fl">女武神的秘宝</span>
+                    <p class="fr clear"><i class="iconfont fl">&#xe62b;</i>共7，131321关注</p>
+                </div>
+            </div>
+            <ul class="active_txt">
+                <li>
+                    <a href="#">每日登录有惊喜</a>
+                    <span>进行中</span>
+                </li>
+                <li>
+                    <a href="#">每日登录有惊喜</a>
+                    <span>进行中</span>
+                </li>
+                <li>
+                    <a href="#">每日登录有惊喜</a>
+                    <span>进行中</span>
+                </li>
+                <li>
+                    <a href="#">每日登录有惊喜</a>
+                    <span>进行中</span>
+                </li>
+                <li>
+                    <a href="#">每日登录有惊喜</a>
+                    <span>进行中</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--con_nav-->
+    <div class="con_nav">
+    	<div class="con_nav_l fl">
+        	<div class="slide" id="slide">
+            	<span class="btn_l">&gt;</span>
+            	<span class="btn_r">&lt;</span>
+                <img src="img/1.jpg"  class="show" />
+                <img src="img/img1.jpg" />
+                <img src="img/img2.png" />
+                <img src="img/img3.jpg" />
+                <img src="img/img4.jpg" />
+                <img src="img/img5.png" />
+            </div>
+            <a class="tuzi"></a>
+            <div class="tuzi2">
+            	<img src="img/examen.jpg" />
+            </div>
+        </div>
+    	<div class="con_nav_c fl"></div>
+    	<div class="con_nav_r fr"></div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

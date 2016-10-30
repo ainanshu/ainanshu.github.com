@@ -1,0 +1,214 @@
+body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,a,i,b,em,strong,span,img{padding:0; margin:0; font-family:'Verdana';}
+a{ text-decoration:none; }
+li{ list-style:none; }
+em,i{ font-style:norml; }
+b,strong{ font-weight:normal; }
+.fl{ float:left; }
+.fr{ float:right; }
+.img,input,textarea,li{ vertical-align:top; }
+.clearFix:after{ content:''; display:block; clear:both; }
+.clearFix{ zoom:1; }
+
+body {
+	line-height:30px;
+}
+#header {
+	width: 25rem;
+	height: 1rem;
+	background: rgba(0,0,0,.7);
+	z-index:1;
+}
+#header .head{height:1rem;}
+#header a{color:#fff; font-size:0.2rem; line-height:1rem;}
+#header .head .logo{ font-size:0.4rem; margin-left:1rem;}
+#header .head a:hover{color:#09C;}
+.head ul li a{display:block;}
+
+.head ul li{height:1rem; text-align:center; margin-right:0.6rem; }
+
+/*轮播图了*/
+
+#box {
+	width: 25rem;
+	height: 12.5rem;
+	position: relative;
+	overflow: hidden;
+}
+#box ul {
+	position: absolute;
+	left: 0;
+	top: 0
+}
+#box ul li {
+	width:25rem;
+	height: 12.5rem;
+	float: left;
+}
+#box ul li img {
+	width:25rem;
+	height: 12.5rem;
+}
+#box ol {
+	position: absolute;
+	width: 4rem;
+	left: 50%;
+	margin-left: -2rem;
+	bottom: 0.2rem;
+}
+#box ol li {
+	width: 0.4rem;
+	height: 0.4rem;
+	background: #f60;
+	float: left;
+	margin: 0.2rem;
+	border-radius: 50%;
+}
+#box ol li.active {
+	background: #fff;
+}
+#box .prev, #box .next {
+	z-index: 2;
+	position: absolute;
+	width: 0.8rem;
+	height: 2rem;
+	background: rgba(100,40,40,1);
+	line-height: 2rem;
+	text-align: center;
+	top: 50%;
+	margin-top: -0.8rem;
+	transition: -0.4s all ease;
+	opacity: 0;
+	color:#fff;
+}
+#box .prev {
+	left: 0;
+	border-radius:0 0.2rem 0.2rem 0;
+}
+#box .next {
+	right: 0;
+	border-radius:0.2rem 0 0 0.2rem ;
+}
+#box a:hover {
+	background: rgba(255,255,255,0.4);
+}
+/*introduce*/
+.duce{
+	width:25rem;
+	height:10rem;
+	background:#f3f2f1;
+}
+.duce .title{
+	font-size:0.7rem; 
+	color:#652b26;
+	width:25rem;
+	height:1rem;
+	line-height:1rem;
+	text-align:center;
+	padding-top:1rem;
+}
+.duce .head{
+	width:4rem;
+	margin:0.5rem auto;
+}
+.duce img{width:4rem;}
+.duce .content{
+	width:15rem;
+	margin:0.2rem auto;
+	text-align:center;
+	font-size:0.4rem; 
+	color:#652b26;
+	font-style:bold;
+}
+
+.duce .nav { width:7rem; height:1rem; margin:0.5rem auto;}
+.duce .nav a{
+	width:3rem;
+	height:1rem;
+	border:1px solid #652b26;
+	color:#652b26;
+	border-radius:0.2rem;
+	font-size:0.5rem;
+	text-align:center;
+	line-height:1rem;
+}
+.duce .nav a:hover{
+	background:#652b26;
+	color:#fff;
+}
+
+
+.show{width:25rem;height:10rem; overflow:hidden; position:relative;}
+
+.show img{width:25rem; margin-top:-4.5rem; }
+.show ul{width:25rem; height:10rem;  position:absolute; top:0; left:0;}
+.show ul li{width:6.25rem; height:10rem; background:rgba(0,0,0,0.4); text-align:center; line-height:10rem; color:#fff; font-size:0.5rem; }
+.show ul li:hover{background:rgba(0,0,0,0.8);}
+.white{width:25rem;height:10rem; background:#f3f2f1;}
+.ject{
+	width:25rem;
+	height:15rem;
+	background:#f3f2f1;
+	
+}
+.ject .title{
+	font-size:0.7rem; 
+	color:#652b26;
+	width:25rem;
+	height:1rem;
+	line-height:1rem;
+	text-align:center;
+	padding-top:1rem;
+	
+}
+.ject .walls{width:19.5rem; height:10rem; border:1px solid #ccc; margin:0 auto;}
+.ject .walls ul{ width:4rem; height:4rem; background:#ccc; float:left; margin:0.4rem; position:relative; overflow:hidden; }
+.ject .walls ul li{ width:4rem; height:4rem; background:#e9ac26; position:absolute; left:0; top:-4rem; font-size:20px; line-height:4rem; opacity:0.9;}
+
+.ject .walls .p1{ background:url(../src/1.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p2{ background:url(../src/2.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p3{ background:url(../src/3.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p4{ background:url(../src/4.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p5{ background:url(../src/5.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p6{ background:url(../src/6.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p7{ background:url(../src/7.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p8{ background:url(../src/8.jpg) top center no-repeat ;background-size:cover;}
+.ject .walls .p1 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p2 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p3 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p4 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p5 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p6 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p7 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+.ject .walls .p8 a{display:block; color:#fff; text-align:center; font-size:0.5rem;}
+
+.ject .more{	
+	width:3rem;
+	height:1rem;
+	border:1px solid #652b26;
+	color:#652b26;
+	border-radius:0.2rem;
+	font-size:0.5rem;
+	text-align:center;
+	line-height:1rem;
+	margin:1rem auto;
+	display:block;
+}
+.ject .more:hover{background:#652b26; color:#fff;}
+
+/*footer*/
+.footer{width:25rem;
+	height:5rem; 
+	background:#162637;
+}
+.footer div{
+	color:#fff;
+	font-size:0.3rem;
+	margin-left:3.5rem;
+	margin-top:2rem;
+}
+.bottom{width:25rem; height:1rem; background:#999;}
+
+
+
+
+
